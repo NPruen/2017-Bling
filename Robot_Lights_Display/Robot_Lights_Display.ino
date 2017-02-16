@@ -9,13 +9,15 @@ int loopCounter = 0;
 
 void setup() {
   decStripSetup();
-  dirStripSetup();
+  decStripSetup1();
 }
 
 void loop() {
   decStripLoop(loopCounter);
-  dirStripLoop(loopCounter);
+  decStripLoop1(loopCounter);
   loopCounter++;
-  if(loopCounter > NUM_LEDS)
+  if(loopCounter > NUM_LEDS) {
     loopCounter = 0;
+  }
 }
+
