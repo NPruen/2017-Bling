@@ -2,19 +2,22 @@
 
 #define NUM_LEDS 150
 
-#include "DecorativeStrip.h"
-#include "DirectionalStrip.h"
+#define CRGB  uint32_t
+
+const int dirStripPin = 10;    // Din pin to Arduino pin 4
+const int dirStripControlPin = 6;
+const int decStripPin = 11;
 
 int loopCounter = 0;
 
 void setup() {
+  dirStripSetup();
   decStripSetup();
-  decStripSetup1();
 }
 
 void loop() {
+  //dirStripLoop(loopCounter);
   decStripLoop(loopCounter);
-  decStripLoop1(loopCounter);
   loopCounter++;
   if(loopCounter > NUM_LEDS) {
     loopCounter = 0;
