@@ -10,22 +10,21 @@ const int decStripPin = 17;
 
 int loopCounter = 0;
 
-//DirectionalStrip dirStrip(numLEDs, dirStripPin, dirStripControlPin);
+DirectionalStrip dirStrip(numLEDs, dirStripPin, dirStripControlPin);
 DecorativeStrip decStrip(numLEDs, decStripPin);
 
 void setup()
 {
-    //dirStrip.setup();
     Serial.begin(9600);
     Serial.println("Hello LEDs");
     decStrip.setup();
+    dirStrip.setup();
 }
 
 void loop()
 {
-    //dirStrip.loop(loopCounter);
     decStrip.loop(loopCounter);
+    dirStrip.loop(loopCounter);
     loopCounter++;
-
     delay(5);
 }

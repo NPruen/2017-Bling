@@ -9,6 +9,6 @@ public:
     void loop(int loopCounter);
 
 private:
-    Adafruit_NeoPixel m_pixels;
     int m_ctlPin;
+    Adafruit_NeoPixel m_pixels;
 };
