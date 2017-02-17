@@ -1,26 +1,31 @@
 #include <Adafruit_NeoPixel.h>
 
-#define NUM_LEDS 150
+#include "DirectionalStrip.h"
+#include "DecorativeStrip.h"
 
-#define CRGB  uint32_t
-
+const int numLEDs = 150;
 const int dirStripPin = 10;    // Din pin to Arduino pin 4
 const int dirStripControlPin = 6;
-const int decStripPin = 11;
+const int decStripPin = 17;
 
 int loopCounter = 0;
 
-void setup() {
-  dirStripSetup();
-  decStripSetup();
+//DirectionalStrip dirStrip(numLEDs, dirStripPin, dirStripControlPin);
+DecorativeStrip decStrip(numLEDs, decStripPin);
+
+void setup()
+{
+    //dirStrip.setup();
+    Serial.begin(9600);
+    Serial.println("Hello LEDs");
+    decStrip.setup();
 }
 
-void loop() {
-  //dirStripLoop(loopCounter);
-  decStripLoop(loopCounter);
-  loopCounter++;
-  if(loopCounter > NUM_LEDS) {
-    loopCounter = 0;
-  }
-}
+void loop()
+{
+    //dirStrip.loop(loopCounter);
+    decStrip.loop(loopCounter);
+    loopCounter++;
 
+    delay(5);
+}
