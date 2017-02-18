@@ -6,7 +6,7 @@
 const int numLEDs = 150;
 const int dirStripPin = 10;    // Din pin to Arduino pin 4
 const int dirStripControlPin = 6;
-const int decStripPin = 17;
+const int decStripPin = 11;
 
 int loopCounter = 0;
 
@@ -15,7 +15,7 @@ DecorativeStrip decStrip(numLEDs, decStripPin);
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(119200);
     Serial.println("Hello LEDs");
     decStrip.setup();
     dirStrip.setup();

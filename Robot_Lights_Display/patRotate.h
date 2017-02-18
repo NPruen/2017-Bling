@@ -20,12 +20,19 @@ public:
 
     virtual void loop(int loopCounter)
     {
-        CRGB last;
+        CRGB last, cur, cur2;
         if(m_up)
         {
             last = m_pixels.getPixelColor(m_pixels.numPixels()-1);
-            for(int i=1;i<m_pixels.numPixels();i++)
+            for(int i=m_pixels.numPixels()-1;i>0;i--)
             {
+                //Serial.println(m_pixels.getPixelColor(i-1));
+
+//                if(nextPixel > 100000) {
+//                  m_pixels.setPixelColor(i, Adafruit_NeoPixel::Color(20, 85, 251));
+//                } else {
+//                  m_pixels.setPixelColor(i, Adafruit_NeoPixel::Color(252, 225, 0));
+//                }
                 m_pixels.setPixelColor(i, m_pixels.getPixelColor(i-1));
             }
             m_pixels.setPixelColor(0, last);
@@ -45,7 +52,7 @@ public:
 
     virtual bool done()
     {
-        if(m_currentCount < m_maxCount)
+        if(m_currentCount < m_maxCount+10)
             return false;
         else
         {
